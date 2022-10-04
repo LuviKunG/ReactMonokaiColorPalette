@@ -1,0 +1,15 @@
+const color = [
+    { color: '#272822', name: 'Background' },
+    { color: '#3e3d32', name: 'Foreground' },
+    { color: '#75715e', name: 'Comments' },
+    { color: '#f8f8f2', name: 'Plain Text' },
+    { color: '#e6db74', name: 'Yellow' },
+    { color: '#fd971f', name: 'Orange' },
+    { color: '#f92672', name: 'Red' },
+    { color: '#fd5ff0', name: 'Purple' },
+    { color: '#ae81ff', name: 'Violet' },
+    { color: '#66d9ef', name: 'Cyan' },
+    { color: '#a1efe4', name: 'Sky' },
+    { color: '#a6e22e', name: 'Green' },
+    { color: '#cfcfc2', name: 'Gray' },
+]; export default color;

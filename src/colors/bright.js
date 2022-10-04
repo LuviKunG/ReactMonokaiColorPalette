@@ -1,0 +1,8 @@
+const color = [
+    { color: "#ff5995", name: "Bright Red" },
+    { color: "#feed6c", name: "Bright Yellow" },
+    { color: "#b6e354", name: "Bright Green" },
+    { color: "#8cedff", name: "Bright Cyan" },
+    { color: "#9e6ffe", name: "Bright Violet" },
+];
+export default color;
