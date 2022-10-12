@@ -4,7 +4,6 @@ import ColorBlock from './ColorBlock';
 import DisplayColor from './DisplayColor';
 import colorDefault from './colors/default';
 import colorBright from './colors/bright';
-import colorVSCode from './colors/vscode';
 import colorNeo from './colors/neo';
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
     "Default": colorDefault,
     "Bright": colorBright,
     "Neo": colorNeo,
-    "VSCode": colorVSCode
   };
   const onColorSelected = (e, color) => {
     setColor(color);
