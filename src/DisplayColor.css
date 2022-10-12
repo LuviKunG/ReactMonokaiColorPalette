@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
+.DisplayColor {
+    color: #fff;
+}
+
+.DisplayColor Button {
+    display: inline-block;
+    border: 0;
+    background-color: transparent;
+}
+
+.DisplayColor Span {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
+    color: #fff;
+}
