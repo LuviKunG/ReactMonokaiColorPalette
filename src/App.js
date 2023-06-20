@@ -47,6 +47,9 @@ function App() {
       <header className="App-header">
         Monokai Color Palette
       </header>
+      <div className="App-subheader">
+        Create by Thanut Panichyotai (<a href="https://luvikung.github.io/">@LuviKunG</a>)
+      </div>
       <body>
         <div className="Color-container">
           {
@@ -54,13 +57,15 @@ function App() {
               return (
                 <div className="Color-group">
                   <h2 className="Color-group-name">{groupName}</h2>
-                  {
-                    colorMaps.map((entry) => {
-                      return (
-                        <ColorBlock color={entry.color} onClick={onColorSelected}>{entry.name}</ColorBlock>
-                      );
-                    })
-                  }
+                  <div className="Color-group-color">
+                    {
+                      colorMaps.map((entry) => {
+                        return (
+                          <ColorBlock color={entry.color} onClick={onColorSelected}>{entry.name}</ColorBlock>
+                        );
+                      })
+                    }
+                  </div>
                 </div>
               );
             })
