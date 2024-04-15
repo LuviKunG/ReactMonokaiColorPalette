@@ -2,15 +2,22 @@
 
 .DisplayColor {
     color: #fff;
+    display: inline-flex;
+    gap: 10px;
 }
 
-.DisplayColor Button {
+.DisplayColor-box {
     display: inline-block;
-    border: 0;
-    background-color: transparent;
 }
 
-.DisplayColor Span {
+.DisplayColor-button {
+    border: 0;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 10%);
+}
+
+.DisplayColor-button-text {
     font-family: 'Roboto Mono', monospace;
     font-size: 20px;
     color: #fff;

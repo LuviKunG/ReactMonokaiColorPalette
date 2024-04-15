@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 
 .App {
     font-family: 'Inter', sans-serif;
@@ -10,12 +9,13 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    user-select: none;
 }
 
 .App-header {
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 48px;
-    font-weight: 600;
+    font-weight: 500;
     color: #ccc;
     text-align: center;
     padding-top: 10px;
@@ -23,7 +23,7 @@
 }
 
 .App-subheader {
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 24px;
     font-weight: 400;
     color: #ccc;
@@ -53,7 +53,8 @@
 }
 
 .Color-group-name {
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
     display: block;
     width: 100%;
     font-size: 32px;
@@ -65,6 +66,7 @@
     flex-flow: row wrap;
     width: 100%;
     justify-content: center;
+    gap: 10px;
 }
 
 .FixedFlex {
@@ -80,7 +82,7 @@
     display: inline-block;
     background-color: #222;
     align-items: center;
-    border-radius: 8px;
+    border-radius: 15px;
     text-align: center;
     padding: 10px;
 }

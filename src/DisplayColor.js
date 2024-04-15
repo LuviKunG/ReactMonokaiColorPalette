@@ -15,12 +15,16 @@ function DisplayColor({ color, onHEXClick, onRGBClick }) {
   }
   return (
     <div className="DisplayColor">
-      <button className="DisplayColor-button" onClick={onHEXClicked}>
-        <span className="DisplayColor-button-text">{color}</span>
-      </button>
-      <button className="DisplayColor-button" onClick={onRGBClicked}>
-        <span className="DisplayColor-button-text">{hexToRgb(color)}</span>
-      </button>
+      <div className="DisplayColor-box">
+        <button className="DisplayColor-button" onClick={onHEXClicked}>
+          <span className="DisplayColor-button-text">{color}</span>
+        </button>
+      </div>
+      <div className="DisplayColor-box">
+        <button className="DisplayColor-button" onClick={onRGBClicked}>
+          <span className="DisplayColor-button-text">{hexToRgb(color)}</span>
+        </button>
+      </div>
     </div>
   );
 }

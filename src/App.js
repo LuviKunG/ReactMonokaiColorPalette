@@ -1,46 +1,42 @@
-import React from 'react';
+import { useState, useRef, useContext } from 'react';
 import './App.css';
 import ColorBlock from './ColorBlock';
 import DisplayColor from './DisplayColor';
-import colorDefault from './colors/default';
-import colorBright from './colors/bright';
-import colorNeo from './colors/neo';
+import ColorContext from './contexts/ColorContext';
 
 function App() {
-  const [showFlashMessage, setShowFlashMessage] = React.useState(false);
-  const [message, setMessage] = React.useState(null);
-  const [color, setColor] = React.useState(null);
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowFlashMessage(false);
-    }, 1000);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [showFlashMessage]);
-  const colors = {
-    "Default": colorDefault,
-    "Bright": colorBright,
-    "Neo": colorNeo,
-  };
-  const onColorSelected = (e, color) => {
+  const [showFlashMessage, setShowFlashMessage] = useState(false);
+  const [message, setMessage] = useState(null);
+  const [color, setColor] = useState(null);
+  const timer = useRef(null);
+  const colorContext = useContext(ColorContext);
+  const onColorSelected = (event, color) => {
     setColor(color);
   };
-  const onColorHexClicked = (e, color) => {
+  const onColorHexClicked = (event, color) => {
     navigator.clipboard.writeText(color);
-    setMessage('HEX copied to clipboard');
+    setMessage(color + ' copied to clipboard');
     setShowFlashMessage(true);
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
+      setShowFlashMessage(false);
+    }, 1000);
   };
-  const onColorRGBClicked = (e, color) => {
+  const onColorRGBClicked = (event, color) => {
     const hexToRgb = (hex) => {
       const r = parseInt(hex.substr(1, 2), 16);
       const g = parseInt(hex.substr(3, 2), 16);
       const b = parseInt(hex.substr(5, 2), 16);
       return `rgb(${r}, ${g}, ${b})`;
     };
-    navigator.clipboard.writeText(hexToRgb(color));
-    setMessage('RGB copied to clipboard');
+    let colorRGBString = hexToRgb(color);
+    navigator.clipboard.writeText(colorRGBString);
+    setMessage(colorRGBString + ' copied to clipboard');
     setShowFlashMessage(true);
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
+      setShowFlashMessage(false);
+    }, 1000);
   };
   return (
     <div className="App">
@@ -53,13 +49,13 @@ function App() {
       <body>
         <div className="Color-container">
           {
-            Object.entries(colors).map(([groupName, colorMaps]) => {
+            Object.entries(colorContext).map(([, entryColors]) => {
               return (
                 <div className="Color-group">
-                  <h2 className="Color-group-name">{groupName}</h2>
+                  <h2 className="Color-group-name">{entryColors.name}</h2>
                   <div className="Color-group-color">
                     {
-                      colorMaps.map((entry) => {
+                      entryColors.colors.map((entry) => {
                         return (
                           <ColorBlock color={entry.color} onClick={onColorSelected}>{entry.name}</ColorBlock>
                         );
