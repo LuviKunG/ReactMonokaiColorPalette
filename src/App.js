@@ -2,7 +2,8 @@ import { useState, useRef, useContext } from 'react';
 import './App.css';
 import ColorBlock from './ColorBlock';
 import DisplayColor from './DisplayColor';
-import ColorContext from './contexts/ColorContext';
+import ColorContext from './contexts/colorcontext';
+import colorHelper from './modules/colorhelper';
 
 function App() {
   const [showFlashMessage, setShowFlashMessage] = useState(false);
@@ -23,13 +24,7 @@ function App() {
     }, 1000);
   };
   const onColorRGBClicked = (event, color) => {
-    const hexToRgb = (hex) => {
-      const r = parseInt(hex.substr(1, 2), 16);
-      const g = parseInt(hex.substr(3, 2), 16);
-      const b = parseInt(hex.substr(5, 2), 16);
-      return `rgb(${r}, ${g}, ${b})`;
-    };
-    let colorRGBString = hexToRgb(color);
+    let colorRGBString = colorHelper.hexToRgb(color);
     navigator.clipboard.writeText(colorRGBString);
     setMessage(colorRGBString + ' copied to clipboard');
     setShowFlashMessage(true);
@@ -46,10 +41,13 @@ function App() {
       <div className="App-subheader">
         Create by Thanut Panichyotai (<a href="https://luvikung.github.io/">@LuviKunG</a>)
       </div>
+      <div className="App-introduction">
+        How to use: Click on the color to show the color code. Click on the color code (HEX or RGB) to copy it to the clipboard.
+      </div>
       <body>
         <div className="Color-container">
           {
-            Object.entries(colorContext).map(([, entryColors]) => {
+            Object.values(colorContext).map((entryColors) => {
               return (
                 <div className="Color-group">
                   <h2 className="Color-group-name">{entryColors.name}</h2>
