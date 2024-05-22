@@ -44,44 +44,42 @@ function App() {
       <div className="App-introduction">
         How to use: Click on the color to show the color code. Click on the color code (HEX or RGB) to copy it to the clipboard.
       </div>
-      <body>
-        <div className="Color-container">
-          {
-            Object.values(colorContext).map((entryColors) => {
-              return (
-                <div className="Color-group">
-                  <h2 className="Color-group-name">{entryColors.name}</h2>
-                  <div className="Color-group-color">
-                    {
-                      entryColors.colors.map((entry) => {
-                        return (
-                          <ColorBlock color={entry.color} onClick={onColorSelected}>{entry.name}</ColorBlock>
-                        );
-                      })
-                    }
-                  </div>
+      <div className="Color-container">
+        {
+          Object.values(colorContext).map((entryColors, entryIndex) => {
+            return (
+              <div className="Color-group" key={entryIndex}>
+                <h2 className="Color-group-name">{entryColors.name}</h2>
+                <div className="Color-group-color">
+                  {
+                    entryColors.colors.map((entry, index) => {
+                      return (
+                        <ColorBlock color={entry.color} onClick={onColorSelected} key={index}>{entry.name}</ColorBlock>
+                      );
+                    })
+                  }
                 </div>
-              );
-            })
-          }
+              </div>
+            );
+          })
+        }
+      </div>
+      {
+        color &&
+        <div className='FixedFlex' style={{ bottom: '120px' }}>
+          <div className='FixedFlex-item'>
+            <DisplayColor color={color} onHEXClick={onColorHexClicked} onRGBClick={onColorRGBClicked} />
+          </div>
         </div>
-        {
-          color &&
-          <div className='FixedFlex' style={{ bottom: '120px' }}>
-            <div className='FixedFlex-item'>
-              <DisplayColor color={color} onHEXClick={onColorHexClicked} onRGBClick={onColorRGBClicked} />
-            </div>
+      }
+      {
+        showFlashMessage &&
+        <div className='FixedFlex' style={{ bottom: '80px' }}>
+          <div className='FixedFlex-item'>
+            {message}
           </div>
-        }
-        {
-          showFlashMessage &&
-          <div className='FixedFlex' style={{ bottom: '80px' }}>
-            <div className='FixedFlex-item'>
-              {message}
-            </div>
-          </div>
-        }
-      </body>
+        </div>
+      }
     </div>
   );
 }
